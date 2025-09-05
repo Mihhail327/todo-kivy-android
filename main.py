@@ -143,7 +143,16 @@ class ToDoLayout(MDBoxLayout):
         now = datetime.now().strftime("%Y-%m-%d %H:%M")
         for task in self.tasks:
             if not task["done"] and not task.get("notified") and task["date"] == now:
+                # Всплывающее окно внутри приложения
                 self.show_popup(f'Время задачи: {task["text"]}')
+
+                # Системное уведомление
+                notification.notify(
+                    title="Напоминание",
+                    message=task["text"],
+                    timeout=10  # в секундах
+                )
+
                 task["notified"] = True
                 self.save_tasks()
 
