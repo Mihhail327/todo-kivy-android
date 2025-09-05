@@ -1,0 +1,40 @@
+<ToDoLayout>:
+    orientation: "vertical"
+    padding: 10
+    spacing: 10
+
+    TextInput:
+        id: task_input
+        size_hint_y: None
+        height: "40dp"
+        multiline: False
+        hint_text: "Добавить задачу"
+        on_text_validate: root.add_task(self.text)
+
+    ScrollView:
+        BoxLayout:
+            id: task_box
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 5
+            padding: 5
+
+            Repeater:
+                data: root.tasks
+                viewclass: "TaskItem"
+
+<TaskItem@BoxLayout>:
+    text: ""
+    size_hint_y: None
+    height: "40dp"
+    spacing: 10
+
+    Label:
+        text: root.text
+        size_hint_x: 0.8
+
+    Button:
+        text: "Удалить"
+        size_hint_x: 0.2
+        on_release: app.root.remove_task(root.text)
