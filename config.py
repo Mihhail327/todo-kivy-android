@@ -1,0 +1,2 @@
+TASKS_FILE = "tasks.json"
+DEFAULT_DATE = "2025-09-06"
