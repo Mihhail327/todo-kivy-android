@@ -9,7 +9,6 @@
         height: "40dp"
         multiline: False
         hint_text: "Добавить задачу"
-        on_text_validate: root.add_task(self.text)
 
     ScrollView:
         BoxLayout:
@@ -20,11 +19,7 @@
             spacing: 5
             padding: 5
 
-            Repeater:
-                data: root.tasks
-                viewclass: "TaskItem"
-
-<TaskItem@BoxLayout>:
+<LabelTask@BoxLayout>:
     text: ""
     size_hint_y: None
     height: "40dp"
